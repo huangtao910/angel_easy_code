@@ -30,7 +30,7 @@ public class TempletDao {
 
 	
 	final static List<Templet> showAllFiles( String basePath, File dir) throws Exception{
-		List<Templet> list=new ArrayList<>();
+		List<Templet> list=new ArrayList<Templet>();
 		
 		File[] fs = dir.listFiles();
 		for(int i=0; i<fs.length; i++){

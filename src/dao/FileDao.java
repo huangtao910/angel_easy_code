@@ -84,7 +84,7 @@ public class FileDao {
 	/**
 	 * 判断文件是否为模板类文件
 	 * 
-	 * @param fileName
+	 * @param filename
 	 * @return
 	 */
 	public static boolean isTemplatFile(String filename) {

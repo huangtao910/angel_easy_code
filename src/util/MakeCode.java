@@ -25,15 +25,15 @@ public class MakeCode {
 		
 		//定义全局替换符
 		Map<String,String> publicMap=new HashMap();
-		publicMap.put("project", "meituan");//项目名（英文）
-		publicMap.put("projectComment", "美团管理系统");//系统中文名称
-		publicMap.put("db", "meituan");//数据库名称
+		publicMap.put("project", "test");//项目名（英文）
+		publicMap.put("projectComment", "测试");//系统中文名称
+		publicMap.put("db", "test");//数据库名称
 		publicMap.put("dbuser", "root");//数据库用户名
-		publicMap.put("dbpassword", "123456");//数据库密码
-		publicMap.put("package", "com.itheima.meituan");//包名称
+		publicMap.put("dbpassword", "root");//数据库密码
+		publicMap.put("package", "com.angel.test");//包名称
 		publicMap.put("path_1", "com");//一级目录
-		publicMap.put("path_2", "itheima");//二级目录
-		publicMap.put("author", "传智.刘备");//作者
+		publicMap.put("path_2", "angel");//二级目录
+		publicMap.put("author", "taohuang");//作者
 		
 		List<Table> tableList=dao.XmlDao.getTableList(xmlPath);//得到表的列表
 		

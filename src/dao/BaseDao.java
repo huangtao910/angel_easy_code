@@ -21,7 +21,7 @@ public class BaseDao {
 	public static Connection getConnection()
 	{
 		try {
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306?useUnicode=true&characterEncoding=UTF8","root","123456");
+			return DriverManager.getConnection("jdbc:mysql://localhost:3306?useUnicode=true&characterEncoding=UTF8","root","root");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

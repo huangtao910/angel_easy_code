@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>[projectComment] - [comment]管理</title>
+
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/form.js"></script>
+<!-- 本程序采用传智easyCode代码生成器生成  -->
+<script type="text/javascript"  src="js/crud.js"></script>
+<script type="text/javascript">
+var v_columns=[[    
+          		       <页面表格列.txt>
+         		        {field:'-',title:'操作',width:100,
+         					formatter: function(value,row,index){
+         						return "<a href='#' onclick='update("+row.[key]  +")'  >修改</a> <a href='#' onclick='dele("+row.[key]  +")'  >删除</a>";
+         					}
+         		         }
+         		
+         		    ]];
+
+ var v_listurl='[table]_listByPage.action';
+ var v_addurl='[table]_add.action';
+ var v_updateurl='[table]_update.action';
+ var v_deleteurl='[table]_delete.action?t.[key]=';
+ var v_geturl='[table]_get.action?id=';
+
+</script>
+</head>
+<body>
+<div class="easyui-panel">
+
+<form id="searchForm">
+<查询表单.nokey.String.txt> <button id="btnSearch" type="button">查询</button>
+</form>
+</div>
+
+<table id="grid"></table>
+
+<div id="editWindow" class="easyui-window" title="[comment]数据编辑" style="width: 350px;height: 350px" data-options="closed:true" >
+	<form id="editForm">		
+		<隐藏列.key.txt>
+		<table>
+		<编辑表单.nokey.txt>		
+		</table>
+		<button id="btnSave" type="button">保存</button>
+</form>
+</div>
+
+</body>
+</html>

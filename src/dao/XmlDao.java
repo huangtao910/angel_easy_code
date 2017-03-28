@@ -1,6 +1,9 @@
 package dao;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,15 +21,15 @@ public class XmlDao {
 
 	/**
 	 * 返回表名称
-	 * @param dbName 库名
+	 * @param xmlPath 库名
 	 * @return
 	 */
 	public static List<Table> getTableList(String xmlPath)
 	{
-		List<Table> list=new ArrayList<>();
+		List<Table> list=new ArrayList<Table>();
 		try {
 			SAXReader reader = new SAXReader();
-			Document doc = reader.read(xmlPath+"\\db.xml");
+			Document doc = reader.read(new BufferedReader(new InputStreamReader(new FileInputStream(new File(xmlPath+"\\db.xml")),"UTF-8")));
 			
 			
 			Element dbe= doc.getRootElement();
@@ -56,7 +59,7 @@ public class XmlDao {
 			}
 			
 			
-		} catch (DocumentException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

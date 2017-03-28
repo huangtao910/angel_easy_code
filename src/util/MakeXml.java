@@ -31,7 +31,7 @@ public class MakeXml {
 		// TODO Auto-generated method stub
 		
 		String outPath="d:\\newxml";//XML保存目录
-		String dbName="meituan";		//数据库名
+		String dbName="test";		//数据库名
 		
 		//自动创建文件夹
 		File file=new File(outPath);
@@ -43,7 +43,7 @@ public class MakeXml {
 		
 		
 		Document doc=DocumentHelper.createDocument();//建立XML文档
-		doc.setXMLEncoding("utf-8");
+		//doc.setXMLEncoding("utf-8");
 				
 		Element root= doc.addElement("db");
 		root.addAttribute("name", dbName);//数据库名称
@@ -97,14 +97,15 @@ public class MakeXml {
 		try {
 			String xmlFileName="db.xml";
     		OutputFormat format = OutputFormat.createPrettyPrint();
-            format.setEncoding("UTF-8");// 设置XML文件的编码格式 
+            format.setEncoding("UTF-8");// 设置XML文件的编码格式
             
             XMLWriter writer = null;// 声明写XML的对象  
             
             File file = new File(outPath+"/"+xmlFileName);  
             
 			writer = new XMLWriter(new FileWriter(file), format);
-			writer.write(doc);  
+			doc.setXMLEncoding("utf-8");
+			writer.write(doc);
 		    writer.close();  
 		    System.out.println("生成成功！保存在"+outPath+"/"+xmlFileName);
 		    

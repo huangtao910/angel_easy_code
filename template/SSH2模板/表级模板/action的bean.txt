@@ -1,0 +1,4 @@
+	<!-- [comment]的action --> 
+	<bean id="[table]Action" class="[package].action.[Table]Action">
+		<property name="[table]Biz" ref="[table]Biz"></property>
+	</bean> 

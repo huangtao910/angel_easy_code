@@ -1,0 +1,4 @@
+	<!-- [comment]业务逻辑层 -->
+	<bean id="[table]Biz" class="[package].biz.impl.[Table]Biz" >
+		<property name="[table]Dao" ref="[table]Dao"></property>
+	</bean>
