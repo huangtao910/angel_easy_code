@@ -7,7 +7,6 @@ import [package].entity.[Table];
 /**
  * [comment]数据层
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public class [Table]Dao extends BaseDao<[Table]> implements I[Table]Dao {
 

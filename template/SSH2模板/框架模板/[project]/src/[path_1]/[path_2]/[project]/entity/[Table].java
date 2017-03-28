@@ -2,7 +2,6 @@
 /**
  * [comment] 实体类
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public class [Table] {
 //实体类属性

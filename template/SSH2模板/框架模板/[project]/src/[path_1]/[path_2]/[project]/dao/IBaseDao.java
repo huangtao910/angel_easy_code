@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * 基础数据层接口
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public interface IBaseDao<T> {
 	

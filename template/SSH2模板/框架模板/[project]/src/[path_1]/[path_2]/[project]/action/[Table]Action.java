@@ -21,7 +21,6 @@ import [package].entity.[Table];
 /**
  * [comment] 控制层
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public class [Table]Action extends BaseAction<[Table]> {
 	

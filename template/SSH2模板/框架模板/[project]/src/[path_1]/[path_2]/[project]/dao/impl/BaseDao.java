@@ -14,7 +14,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 /**
  * 数据层基类
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public abstract class BaseDao<T> extends HibernateDaoSupport  {
 

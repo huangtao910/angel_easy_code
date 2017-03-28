@@ -21,7 +21,6 @@ import sun.org.mozilla.javascript.internal.json.JsonParser;
 /**
  * 基础控制层
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public class BaseAction<T>  {
 	

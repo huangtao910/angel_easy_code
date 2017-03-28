@@ -8,7 +8,6 @@ import [package].entity.[Table];
 /**
  * [comment] 业务层
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public class [Table]Biz extends BaseBiz<[Table]> implements I[Table]Biz {
 

@@ -10,7 +10,6 @@ import [package].dao.IBaseDao;
 /**
  * 基础业务层
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public class BaseBiz<T> implements IBaseBiz<T> {
 

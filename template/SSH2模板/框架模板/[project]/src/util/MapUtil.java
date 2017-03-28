@@ -13,7 +13,6 @@ import java.util.Map;
 /**
  * MAP工具类
  * @author [author]
- * 本代码通过《传智代码神器》生成
  */
 public class MapUtil {
 	
