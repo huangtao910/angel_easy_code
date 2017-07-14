@@ -1,11 +1,13 @@
 package dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import InitData.InitBaseData;
 import entity.Column;
 /**
  * 数据表DAO
@@ -26,7 +28,7 @@ public class TableDao {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		List<String> list=new ArrayList();		
-		conn=BaseDao.getConnection();
+		conn= InitBaseData.getConnection();
 		try {
 			stmt=conn.prepareStatement("SELECT TABLE_NAME FROM information_schema.tables where TABLE_SCHEMA=?");
 			stmt.setString(1, dbName);
@@ -40,7 +42,7 @@ public class TableDao {
 			e.printStackTrace();
 		}finally
 		{
-			BaseDao.closeAll(rs, stmt, conn);
+			InitBaseData.closeAll(rs, stmt, conn);
 		}
 		
 		return list;
@@ -57,7 +59,7 @@ public class TableDao {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		List<Column> list=new ArrayList();		
-		conn=BaseDao.getConnection();
+		conn=InitBaseData.getConnection();
 		try {
 			String sql="SELECT COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT, COLUMN_KEY FROM information_schema.columns WHERE TABLE_NAME=?";
 			
@@ -78,7 +80,7 @@ public class TableDao {
 			e.printStackTrace();
 		}finally
 		{
-			BaseDao.closeAll(rs, stmt, conn);
+			InitBaseData.closeAll(rs, stmt, conn);
 		}
 		
 		return list;
@@ -91,7 +93,7 @@ public class TableDao {
 		{
 			return "Long";
 		}
-		if(dbtype.equals("varchar"))
+		if(dbtype.equals("varchar") || dbtype.equals("text") || dbtype.equals("longtext"))
 		{
 			return "String";
 		}
@@ -99,17 +101,22 @@ public class TableDao {
 		{
 			return "Integer";
 		}
-		if(dbtype.equals("date"))
+		if(dbtype.equals("date") )
 		{
 			return "java.util.Date";
 		}
-		if(dbtype.equals("datetime"))
+		if(dbtype.equals("datetime") || dbtype.equals("timestamp"))
 		{
 			return "java.util.Date";
 		}
 		if(dbtype.equals("double"))
 		{
 			return "Double";
+		}
+		if(dbtype.equals("decimal"))
+		{
+			return "BigDecimal";
+
 		}
 		return dbtype;
 	}

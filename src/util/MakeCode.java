@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import InitData.InitBaseData;
 import entity.Table;
 import entity.Templet;
 
@@ -14,33 +15,15 @@ public class MakeCode {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		Map<String, String> publicMap = getPubliceMap();
+
+		List<Table> tableList=dao.XmlDao.getTableList(InitBaseData.dbName);//得到表的列表
 		
-		//变量定义
-		String templetPath="d:\\SSH2模板\\框架模板";//框架模板所在目录
-		String tablleTempletPath="d:\\SSH2模板\\表级模板";//表级模板所在目录
-		String columnTempletPath="d:\\SSH2模板\\列级模板";//列级模板所在目录		
-		String codePath="d:\\newcode";//代码输出目录
-		String xmlPath="d:\\newxml";//数据库信息文件
-		
-		//定义全局替换符
-		Map<String,String> publicMap=new HashMap();
-		publicMap.put("project", "test");//项目名（英文）
-		publicMap.put("projectComment", "测试");//系统中文名称
-		publicMap.put("db", "test");//数据库名称
-		publicMap.put("dbuser", "root");//数据库用户名
-		publicMap.put("dbpassword", "root");//数据库密码
-		publicMap.put("package", "com.angel.test");//包名称
-		publicMap.put("path_1", "com");//一级目录
-		publicMap.put("path_2", "angel");//二级目录
-		publicMap.put("author", "taohuang");//作者
-		
-		List<Table> tableList=dao.XmlDao.getTableList(xmlPath);//得到表的列表
-		
-		Map<String ,String > tableTempletMap= dao.ClientTempletDao.getTempletList(tablleTempletPath);//表级模板MAP
-		Map<String ,String > columnTempletMap= dao.ClientTempletDao.getTempletList(columnTempletPath);//列级模板MAP
-		
-		List<Templet> list=dao.TempletDao.getTempletList(templetPath);
+		Map<String ,String > tableTempletMap= dao.ClientTempletDao.getTempletList(InitBaseData.tablleTempletPath);//表级模板MAP
+		Map<String ,String > columnTempletMap= dao.ClientTempletDao.getTempletList(InitBaseData.columnTempletPath);//列级模板MAP
+
+		List<Templet> list=dao.TempletDao.getTempletList(InitBaseData.templetPath);
 		//循环所有模板
 		for(Templet t:list  )
 		{
@@ -71,27 +54,41 @@ public class MakeCode {
 						outContent= dao.ClientTempletDao.createContent(outContent, publicMap);
 											
 						//输出的路径(经过全局替换)
-						String outPath= dao.ClientTempletDao.createContent(codePath+"/"+ t.getPath()+"/"+outFile, publicMap)  ;						
+						String outPath= dao.ClientTempletDao.createContent(InitBaseData.codePath+"/"+ t.getPath()+"/"+outFile, publicMap)  ;
 						//写入文件
 						dao.FileDao.setContent(outPath, outContent);
 					}								
 				}else //不用循环的文件
 				{
-					String outPath= dao.ClientTempletDao.createContent(codePath+"/"+ t.getPath()+"/"+t.getFileName(), publicMap); 	
+					String outPath= dao.ClientTempletDao.createContent(InitBaseData.codePath+"/"+ t.getPath()+"/"+t.getFileName(), publicMap);
 					content= dao.ClientTempletDao.createContent(content, publicMap);
 					dao.FileDao.setContent(outPath, content);//写入文件
 				}				
 			}else  //非模板文件直接拷贝
 			{
-				String newPath= dao.ClientTempletDao.createContent( codePath+"/"+ t.getPath()+"/"+t.getFileName(), publicMap); 
+				String newPath= dao.ClientTempletDao.createContent( InitBaseData.codePath+"/"+ t.getPath()+"/"+t.getFileName(), publicMap);
 				dao.FileDao.copyFile(t.getAllPath(), newPath);
 			}			
 		}		
 		System.out.println("代码成功生成!");
 		
 	}
-	
-	
-	
+
+	//定义全局替换符
+	private static Map<String, String> getPubliceMap() {
+
+		Map<String,String> publicMap = new HashMap();
+		publicMap.put("project", InitBaseData.projectName);//项目名（英文）
+		publicMap.put("projectComment", InitBaseData.projectComment);//系统中文名称
+		publicMap.put("db", InitBaseData.dbName);//数据库名称
+		publicMap.put("dbuser", InitBaseData.dbUsername);//数据库用户名
+		publicMap.put("dbpassword", InitBaseData.dbPassword);//数据库密码
+		publicMap.put("package", InitBaseData.packageName);//包名称
+		publicMap.put("path_1", InitBaseData.path_1);//一级目录
+		publicMap.put("path_2", InitBaseData.path_2);//二级目录
+		publicMap.put("author", InitBaseData.authorName);//作者
+		return publicMap;
+	}
+
 
 }

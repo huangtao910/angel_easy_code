@@ -28,10 +28,25 @@ public class XmlDao {
 	{
 		List<Table> list=new ArrayList<Table>();
 		try {
-			SAXReader reader = new SAXReader();
+			List<String> tableList = TableDao.getTableList(xmlPath);
+			for (String tableName : tableList){
+				Table table = new Table();
+				table.setName(tableName);
+				table.setComment(tableName);
+				List<Column> columnsList = TableDao.getColumnsList(tableName);
+				for (Column column : columnsList){
+					//类型转换
+					column.setColumnType(TableDao.ConvertType(column.getColumnType()));
+					if(column.getColumnKey().equals("PRI"))//主键
+					{
+						table.setKey(column.getColumnName());
+					}
+				}
+				table.setColumns(columnsList);
+				list.add(table);
+			}
+			/*SAXReader reader = new SAXReader();
 			Document doc = reader.read(new BufferedReader(new InputStreamReader(new FileInputStream(new File(xmlPath+"\\db.xml")),"UTF-8")));
-			
-			
 			Element dbe= doc.getRootElement();
 			List<Element> elist= dbe.elements();
 			for(Element e:elist)
@@ -40,10 +55,10 @@ public class XmlDao {
 				table.setName(e.attributeValue("name"));
 				table.setComment(e.attributeValue("comment"));
 				table.setKey(e.attributeValue("key"));
-				
+
 				List<Column> columns=new ArrayList();
 				List<Element> elist2=  e.elements(); //字段列表
-				
+
 				for(Element e2:elist2)
 				{
 					Column column=new Column();
@@ -55,15 +70,14 @@ public class XmlDao {
 				}
 				table.setColumns(columns);
 				list.add(table);
-				
-			}
-			
-			
+
+			}*/
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 

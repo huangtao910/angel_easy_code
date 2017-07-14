@@ -11,7 +11,8 @@ public class Table {
 	private String name;//表名称
 	private String comment;//介绍
 	private String key;// 主键列
-	
+	private String packageName;//包名
+
 	public String getKey() {
 		return key;
 	}
@@ -40,4 +41,11 @@ public class Table {
 		this.comment = comment;
 	}
 
+	public String getPackageName() {
+		return packageName;
+	}
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
+	}
 }

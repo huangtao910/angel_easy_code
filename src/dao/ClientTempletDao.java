@@ -146,8 +146,7 @@ public class ClientTempletDao {
 	  * 替换内容 把子内容加上 (替换内容)
 	  * @param oldContent 原文本
 	  * @param map 子替换符号列表
-	  * @param columns 列集合
-	  * @return 
+	  * @return
 	  */
 	 public static String createContentForTable(String oldContent,  Map<String,String> map ,List<Table> tables )
 	 {
